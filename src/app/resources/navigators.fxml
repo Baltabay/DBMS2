@@ -1,0 +1,190 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.chart.PieChart?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<AnchorPane prefHeight="820.0" prefWidth="1303.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.NavigatorsFXMLController">
+   <children>
+      <VBox fx:id="pane" alignment="TOP_CENTER" prefHeight="820.0" prefWidth="258.0" style="-fx-background-color: #263650;">
+         <effect>
+            <DropShadow />
+         </effect>
+         <children>
+            <Label prefHeight="75.0" prefWidth="323.0" text="PayJunction" textFill="WHITE">
+               <padding>
+                  <Insets bottom="20.0" left="30.0" right="20.0" top="20.0" />
+               </padding>
+               <font>
+                  <Font name="Calibri" size="27.0" />
+               </font>
+               <graphic>
+                  <ImageView fitHeight="56.0" fitWidth="45.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@logo.png" />
+                     </image>
+                  </ImageView>
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="80.0" />
+               </VBox.margin>
+            </Label>
+            <JFXButton fx:id="btn1" onAction="#handlerMenuButton" prefHeight="60.0" prefWidth="323.0" text="Dashboard" textFill="#bfbfbf">
+               <font>
+                  <Font name="Calibri Light" size="20.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="#bfbfbf" glyphName="VIEW_DASHBOARD" size="20" />
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btn2" layoutX="10.0" layoutY="145.0" onAction="#handlerMenuButton" prefHeight="60.0" prefWidth="323.0" text="Button" textFill="#bfbfbf">
+               <font>
+                  <Font name="Calibri Light" size="20.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="#bfbfbf" size="20" />
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btn3" layoutX="10.0" layoutY="225.0" onAction="#handlerMenuButton" prefHeight="60.0" prefWidth="323.0" text="Orders" textFill="#bfbfbf">
+               <font>
+                  <Font name="Calibri Light" size="20.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="#bfbfbf" glyphName="VIEW_LIST" size="20" />
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btn4" layoutX="10.0" layoutY="305.0" onAction="#handlerMenuButton" prefHeight="60.0" prefWidth="323.0" text="Employees" textFill="#bfbfbf">
+               <font>
+                  <Font name="Calibri Light" size="20.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="#bfbfbf" glyphName="HUMAN" size="20" />
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton fx:id="btn5" layoutX="10.0" layoutY="385.0" onAction="#handlerMenuButton" prefHeight="60.0" prefWidth="323.0" text="Stats" textFill="#bfbfbf">
+               <font>
+                  <Font name="Calibri Light" size="20.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="#bfbfbf" glyphName="MATH_COMPASS" size="20" />
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <JFXButton layoutX="10.0" layoutY="505.0" onAction="#close" prefHeight="60.0" prefWidth="323.0" text="Exit" textFill="#bfbfbf">
+               <font>
+                  <Font name="Calibri Light" size="20.0" />
+               </font>
+               <graphic>
+                  <MaterialDesignIconView fill="#bfbfbf" glyphName="EXIT_TO_APP" size="20" />
+               </graphic>
+               <VBox.margin>
+                  <Insets bottom="10.0" top="10.0" />
+               </VBox.margin>
+            </JFXButton>
+            <Label text="\@Baltabay" textFill="#bfbfbf">
+               <VBox.margin>
+                  <Insets top="150.0" />
+               </VBox.margin>
+               <font>
+                  <Font size="12.0" />
+               </font>
+            </Label>
+         </children>
+      </VBox>
+      <Pane fx:id="pane4" layoutX="270.0" prefHeight="820.0" prefWidth="1033.0" style="-fx-background-color: white;">
+         <children>
+            <Label prefHeight="75.0" prefWidth="1033.0" text="Employees">
+               <padding>
+                  <Insets left="35.0" />
+               </padding>
+               <font>
+                  <Font name="Calibri" size="35.0" />
+               </font>
+            </Label>
+            <TableView fx:id="emp_table" layoutX="14.0" layoutY="174.0" prefHeight="635.0" prefWidth="999.0">
+              <columns>
+                <TableColumn fx:id="col_id" prefWidth="114.0" text="Employee_id" />
+                <TableColumn fx:id="col_firstName" minWidth="0.0" prefWidth="191.0" text="First name" />
+                  <TableColumn fx:id="col_lastName" minWidth="0.0" prefWidth="188.0" text="Last Name" />
+                  <TableColumn fx:id="col_job" minWidth="0.0" prefWidth="266.0" text="Job description" />
+                  <TableColumn fx:id="col_phone" minWidth="0.0" prefWidth="238.0" text="Phone" />
+              </columns>
+            </TableView>
+            <TextField fx:id="emp_search" layoutX="92.0" layoutY="130.0" onKeyReleased="#employeeSearch" prefHeight="31.0" prefWidth="239.0" promptText="Name" />
+            <Label layoutX="26.0" layoutY="135.0" prefHeight="21.0" prefWidth="66.0" text="Filter by:" />
+            <JFXButton layoutX="869.0" layoutY="130.0" prefHeight="31.0" prefWidth="144.0" text="Add Employee">
+               <graphic>
+                  <MaterialDesignIconView glyphName="PLUS" glyphStyle="BOLD" size="20" />
+               </graphic>
+            </JFXButton>
+         </children>
+      </Pane>
+      <Pane fx:id="pane5" layoutX="270.0" prefHeight="820.0" prefWidth="1033.0" style="-fx-background-color: white;">
+         <children>
+            <Label prefHeight="75.0" prefWidth="1033.0" text="Stats">
+               <padding>
+                  <Insets left="35.0" />
+               </padding>
+               <font>
+                  <Font name="Calibri" size="35.0" />
+               </font>
+            </Label>
+            <VBox layoutY="75.0" prefHeight="745.0" prefWidth="1033.0">
+               <children>
+                  <LineChart fx:id="line_chart" prefHeight="378.0" prefWidth="958.0">
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <HBox prefHeight="368.0" prefWidth="996.0">
+                     <children>
+                        <PieChart fx:id="pie_chart1" prefHeight="368.0" prefWidth="341.0" />
+                        <PieChart fx:id="pie_chart2" layoutX="10.0" layoutY="10.0" prefHeight="368.0" prefWidth="341.0" />
+                        <PieChart fx:id="pie_chart3" layoutX="324.0" layoutY="10.0" prefHeight="368.0" prefWidth="341.0" />
+                     </children>
+                  </HBox>
+               </children>
+               <padding>
+                  <Insets bottom="10.0" right="10.0" />
+               </padding>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane fx:id="pane1" layoutX="270.0" prefHeight="820.0" prefWidth="1033.0" style="-fx-background-color: gray;" />
+      <Pane fx:id="pane2" layoutX="270.0" prefHeight="820.0" prefWidth="1033.0" style="-fx-background-color: red;" />
+      <Pane fx:id="pane3" layoutX="270.0" prefHeight="820.0" prefWidth="1033.0" style="-fx-background-color: white;" />
+   </children>
+</AnchorPane>
