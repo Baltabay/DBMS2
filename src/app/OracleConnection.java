@@ -33,15 +33,4 @@ public class OracleConnection {
     public Connection getConnection() {
         return conn;
     }
-
-    public static void main(String[] args) throws SQLException {
-        OracleConnection handler = new OracleConnection("\"Project\"", "87013345999b");
-        Connection connection = handler.getConnection();
-        Statement stmt = connection.createStatement();
-        ResultSet rs = stmt.executeQuery("select * from COUNTRIES");
-
-        while (rs.next()) System.out.println(rs.getInt(1) + " " + rs.getString(2));
-
-        connection.close();
-    }
 }

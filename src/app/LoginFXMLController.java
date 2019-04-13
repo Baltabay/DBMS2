@@ -1,5 +1,8 @@
 package app;
 
+import javafx.animation.SequentialTransition;
+import javafx.animation.Transition;
+import javafx.animation.TranslateTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -12,6 +15,7 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
+import javafx.util.Duration;
 
 import java.io.IOException;
 import java.net.URL;
@@ -21,10 +25,11 @@ import java.util.ResourceBundle;
 
 public class LoginFXMLController implements Initializable  {
     @FXML private AnchorPane pane;
-    @FXML private Button connect_button;
     @FXML private Text message;
     @FXML private TextField user_id;
     @FXML private PasswordField password;
+
+    private boolean right = true;
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
@@ -62,8 +67,54 @@ public class LoginFXMLController implements Initializable  {
     }
 
     @FXML
-    private void close(ActionEvent event){
+    private void handleCloseButton(ActionEvent event){
         Stage stage = (Stage)((Button)event.getSource()).getScene().getWindow();
         stage.close();
+    }
+
+    @FXML
+    private void handleMoveButton(ActionEvent event){
+        if (right) {
+            TranslateTransition t1 = new TranslateTransition();
+            TranslateTransition t2 = new TranslateTransition();
+            TranslateTransition t3 = new TranslateTransition();
+
+            t1.setDuration(new Duration(200));
+            t2.setDuration(new Duration(300));
+            t3.setDuration(new Duration(300));
+
+            t1.setNode(pane);
+            t2.setNode(pane);
+            t3.setNode(pane);
+
+            t1.setByX(-510);
+            t2.setByX(40);
+            t3.setByX(-10);
+
+            SequentialTransition transition = new SequentialTransition(t1, t2, t3);
+            transition.play();
+            right = false;
+        } else {
+            TranslateTransition t1 = new TranslateTransition();
+            TranslateTransition t2 = new TranslateTransition();
+            TranslateTransition t3 = new TranslateTransition();
+
+            t1.setDuration(new Duration(200));
+            t2.setDuration(new Duration(300));
+            t3.setDuration(new Duration(300));
+
+            t1.setNode(pane);
+            t2.setNode(pane);
+            t3.setNode(pane);
+
+            t1.setByX(510);
+            t2.setByX(-40);
+            t3.setByX(10);
+
+            SequentialTransition transition = new SequentialTransition(t1, t2, t3);
+            transition.play();
+            right = true;
+        }
+
     }
 }

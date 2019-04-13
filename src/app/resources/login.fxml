@@ -1,41 +1,92 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
-<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.layout.AnchorPane?>
-<?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-
-<VBox prefHeight="752.0" prefWidth="469.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.LoginFXMLController">
+<AnchorPane prefHeight="580.0" prefWidth="1200.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.LoginFXMLController">
    <children>
-      <AnchorPane prefHeight="64.0" prefWidth="469.0" style="-fx-background-color: #263650;">
-         <VBox.margin>
-            <Insets bottom="15.0" />
-         </VBox.margin>
+      <AnchorPane layoutY="55.0" opacity="0.85" prefHeight="470.0" prefWidth="1200.0" style="-fx-background-color: #1a1a1a; -fx-background-radius: 2;">
          <children>
-            <Button layoutX="421.0" layoutY="13.0" mnemonicParsing="false" onAction="#close" style="-fx-background-color: transparent;">
+            <Text fill="WHITE" layoutX="106.0" layoutY="241.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sign in with your admin account">
+               <font>
+                  <Font name="Open Sans" size="16.0" />
+               </font>
+            </Text>
+            <Label layoutX="104.0" layoutY="130.0" text="SIGN IN" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans" size="55.0" />
+               </font>
+            </Label>
+            <Text fill="WHITE" layoutX="106.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="If you don't have any account">
+               <font>
+                  <Font name="Open Sans" size="15.0" />
+               </font>
+            </Text>
+            <Button layoutX="321.0" layoutY="315.0" mnemonicParsing="false" onAction="#handleMoveButton" prefHeight="38.0" prefWidth="160.0" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-radius: 4;" text="SIGN UP" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans Bold" size="16.0" />
+               </font>
+            </Button>
+            <Text fill="WHITE" layoutX="705.0" layoutY="217.0" strokeType="OUTSIDE" strokeWidth="0.0" text="To create an admin account, contact the main administrator" textAlignment="CENTER" wrappingWidth="400.740234375">
+               <font>
+                  <Font name="Open Sans Bold" size="20.0" />
+               </font>
+            </Text>
+            <MaterialDesignIconView fill="WHITE" glyphName="ALERT" layoutX="885.0" layoutY="172.0" size="40" />
+            <Button layoutX="825.0" layoutY="288.0" mnemonicParsing="false" onAction="#handleMoveButton" prefHeight="20.0" prefWidth="160.0" style="-fx-background-color: transparent; -fx-border-color: gray; -fx-border-radius: 4;" text="BACK" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans Bold" size="16.0" />
+               </font>
                <graphic>
-                  <MaterialDesignIconView fill="WHITE" glyphName="CLOSE" size="28" />
+                  <MaterialDesignIconView fill="WHITE" glyphName="BACKSPACE" size="14" />
                </graphic>
             </Button>
          </children>
       </AnchorPane>
-      <AnchorPane fx:id="pane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="673.0" prefWidth="469.0" style="-fx-background-color: #263650;">
+      <AnchorPane fx:id="pane" layoutX="550.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="580.0" prefWidth="580.0" style="-fx-background-color: #263650; -fx-background-radius: 5;">
          <children>
-            <TextField fx:id="user_id" layoutX="142.0" layoutY="195.0" promptText="User" style="-fx-background-color: transparent;" />
-            <PasswordField fx:id="password" layoutX="142.0" layoutY="306.0" promptText="Password" style="-fx-background-color: transparent;" />
-            <Button fx:id="connect_button" layoutX="193.0" layoutY="411.0" mnemonicParsing="false" onAction="#connects" style="-fx-background-color: transparent;" text="Connect" textFill="#ffd308">
+            <TextField fx:id="user_id" layoutX="120.0" layoutY="179.0" prefHeight="47.0" prefWidth="340.0" promptText="User" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: #32B4D8; -fx-border-radius: 5;">
                <font>
-                  <Font name="System Bold" size="16.0" />
+                  <Font name="Open Sans" size="18.0" />
+               </font>
+            </TextField>
+            <PasswordField fx:id="password" layoutX="120.0" layoutY="267.0" prefHeight="47.0" prefWidth="340.0" promptText="Password" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-border-color: #32B4D8; -fx-border-radius: 5;">
+               <font>
+                  <Font name="Open Sans" size="18.0" />
+               </font>
+            </PasswordField>
+            <Button fx:id="connect_button" layoutX="120.0" layoutY="383.0" mnemonicParsing="false" onAction="#connects" prefHeight="47.0" prefWidth="340.0" style="-fx-background-color: #32B4D8; -fx-border-color: #32B4D8; -fx-border-radius: 4;" text="Log in" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans Bold" size="19.0" />
                </font>
             </Button>
-            <Text fx:id="message" layoutX="11.0" layoutY="89.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="CENTER" wrappingWidth="356.0" AnchorPane.leftAnchor="11.0" AnchorPane.rightAnchor="10.0" />
+            <Text fx:id="message" fill="WHITE" layoutX="293.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" textAlignment="RIGHT" wrappingWidth="166.00000709295273" AnchorPane.leftAnchor="293.0" AnchorPane.rightAnchor="120.99999290704727" />
+            <Button layoutX="518.0" layoutY="14.0" mnemonicParsing="false" onAction="#handleCloseButton" style="-fx-background-color: transparent;">
+               <graphic>
+                  <MaterialDesignIconView fill="WHITE" glyphName="CLOSE" size="28" />
+               </graphic>
+            </Button>
+            <Label layoutX="120.0" layoutY="103.0" text="Admin panel" textFill="WHITE">
+               <font>
+                  <Font name="Open Sans" size="28.0" />
+               </font>
+            </Label>
+            <Label layoutX="251.0" layoutY="556.0" text="\@Baltabay" textFill="#bfbfbf">
+               <font>
+                  <Font name="Open Sans" size="14.0" />
+               </font>
+            </Label>
          </children>
+         <effect>
+            <DropShadow />
+         </effect>
       </AnchorPane>
    </children>
-</VBox>
+</AnchorPane>

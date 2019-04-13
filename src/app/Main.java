@@ -14,7 +14,7 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //MaterialDesignIcon.VIEW_LIST
+        //MaterialDesignIcon.BACKSPACE
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/login.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
@@ -23,9 +23,6 @@ public class Main extends Application {
         primaryStage.setScene(scene);
         primaryStage.show();
     }
-
-
-
 
     public static void main(String[] args) {
         launch(args);
