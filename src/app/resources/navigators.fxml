@@ -1,6 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXComboBox?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import de.jensd.fx.glyphs.fontawesome.FontAwesomeIconView?>
 <?import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.chart.CategoryAxis?>
@@ -8,9 +11,9 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.chart.PieChart?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.effect.DropShadow?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -18,13 +21,16 @@
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Line?>
+<?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<AnchorPane prefHeight="820.0" prefWidth="1303.0" style="-fx-background-color: transparent;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.NavigatorsFXMLController">
+<AnchorPane prefHeight="820.0" prefWidth="1303.0" style="-fx-background-color: #F1EFF1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.NavigatorsFXMLController">
    <children>
       <VBox fx:id="pane" alignment="TOP_CENTER" prefHeight="820.0" prefWidth="258.0" style="-fx-background-color: #263650;">
          <effect>
-            <DropShadow />
+            <DropShadow color="#000000c9" radius="7.25" width="10.0" />
          </effect>
          <children>
             <Label prefHeight="75.0" prefWidth="323.0" text="PayJunction" textFill="WHITE">
@@ -121,45 +127,43 @@
             </Label>
          </children>
       </VBox>
-      <Pane fx:id="pane4" layoutX="270.0" prefHeight="820.0" prefWidth="1033.0" style="-fx-background-color: white;">
+      <Pane fx:id="pane4" layoutX="258.0" prefHeight="820.0" prefWidth="1045.0" style="-fx-background-color: #F1EFF1;">
          <children>
-            <Label prefHeight="75.0" prefWidth="1033.0" text="Employees">
-               <padding>
-                  <Insets left="35.0" />
-               </padding>
-               <font>
-                  <Font name="Calibri" size="35.0" />
-               </font>
-            </Label>
-            <TableView fx:id="emp_table" layoutX="14.0" layoutY="174.0" prefHeight="635.0" prefWidth="999.0">
+            <TableView fx:id="emp_table" layoutX="11.0" layoutY="175.0" onMouseClicked="#clickItemOnEmployee" prefHeight="635.0" prefWidth="1023.0" stylesheets="@tableview.css">
               <columns>
-                <TableColumn fx:id="col_id" prefWidth="114.0" text="Employee_id" />
-                <TableColumn fx:id="col_firstName" minWidth="0.0" prefWidth="191.0" text="First name" />
-                  <TableColumn fx:id="col_lastName" minWidth="0.0" prefWidth="188.0" text="Last Name" />
-                  <TableColumn fx:id="col_job" minWidth="0.0" prefWidth="266.0" text="Job description" />
-                  <TableColumn fx:id="col_phone" minWidth="0.0" prefWidth="238.0" text="Phone" />
+                <TableColumn fx:id="emp_col_id" prefWidth="142.0" text="Employee_id" />
+                <TableColumn fx:id="emp_col_firstName" minWidth="0.0" prefWidth="181.0" text="First name" />
+                  <TableColumn fx:id="emp_col_lastName" minWidth="0.0" prefWidth="206.0" text="Last Name" />
+                  <TableColumn fx:id="emp_col_job" minWidth="0.0" prefWidth="222.0" text="Job description" />
+                  <TableColumn fx:id="emp_col_phone" minWidth="0.0" prefWidth="253.0" text="Phone" />
               </columns>
+               <effect>
+                  <DropShadow color="#00000033" height="15.0" radius="7.0" width="15.0" />
+               </effect>
             </TableView>
-            <TextField fx:id="emp_search" layoutX="92.0" layoutY="130.0" onKeyReleased="#employeeSearch" prefHeight="31.0" prefWidth="239.0" promptText="Name" />
-            <Label layoutX="26.0" layoutY="135.0" prefHeight="21.0" prefWidth="66.0" text="Filter by:" />
-            <JFXButton layoutX="869.0" layoutY="130.0" prefHeight="31.0" prefWidth="144.0" text="Add Employee">
+            <JFXButton layoutX="887.0" layoutY="127.0" prefHeight="31.0" prefWidth="144.0" text="Add Employee">
                <graphic>
                   <MaterialDesignIconView glyphName="PLUS" glyphStyle="BOLD" size="20" />
                </graphic>
             </JFXButton>
-         </children>
-      </Pane>
-      <Pane fx:id="pane5" layoutX="270.0" prefHeight="820.0" prefWidth="1033.0" style="-fx-background-color: white;">
-         <children>
-            <Label prefHeight="75.0" prefWidth="1033.0" text="Stats">
+            <Label prefHeight="75.0" prefWidth="1045.0" style="-fx-background-color: white;" text="Employees">
                <padding>
-                  <Insets left="35.0" />
+                  <Insets left="20.0" />
                </padding>
                <font>
                   <Font name="Calibri" size="35.0" />
                </font>
+               <effect>
+                  <DropShadow color="#0000008b" radius="7.25" width="10.0" />
+               </effect>
             </Label>
-            <VBox layoutY="75.0" prefHeight="745.0" prefWidth="1033.0">
+            <JFXComboBox fx:id="emp_comboBox" layoutX="215.0" layoutY="125.0" onAction="#employeeSearchBy" prefHeight="31.0" prefWidth="134.0" promptText="by" />
+            <JFXTextField fx:id="emp_search" layoutX="14.0" layoutY="125.0" onKeyReleased="#employeeSearch" prefHeight="31.0" prefWidth="193.0" promptText="Search" />
+         </children>
+      </Pane>
+      <Pane fx:id="pane5" layoutX="258.0" prefHeight="820.0" prefWidth="1045.0" style="-fx-background-color: #F1EFF1;">
+         <children>
+            <VBox layoutX="6.0" layoutY="75.0" prefHeight="745.0" prefWidth="1033.0">
                <children>
                   <LineChart fx:id="line_chart" prefHeight="378.0" prefWidth="958.0">
                     <xAxis>
@@ -181,10 +185,249 @@
                   <Insets bottom="10.0" right="10.0" />
                </padding>
             </VBox>
+            <Label prefHeight="75.0" prefWidth="1045.0" style="-fx-background-color: white;" text="Stats">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <font>
+                  <Font name="Calibri" size="35.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#0000008b" radius="7.25" width="10.0" />
+               </effect>
+            </Label>
          </children>
       </Pane>
-      <Pane fx:id="pane1" layoutX="270.0" prefHeight="820.0" prefWidth="1033.0" style="-fx-background-color: gray;" />
-      <Pane fx:id="pane2" layoutX="270.0" prefHeight="820.0" prefWidth="1033.0" style="-fx-background-color: red;" />
-      <Pane fx:id="pane3" layoutX="270.0" prefHeight="820.0" prefWidth="1033.0" style="-fx-background-color: white;" />
+      <Pane fx:id="pane2" layoutX="258.0" prefHeight="820.0" prefWidth="1045.0" style="-fx-background-color: #F1EFF1;">
+         <children>
+            <Label prefHeight="75.0" prefWidth="1045.0" style="-fx-background-color: white;" text="?">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <font>
+                  <Font name="Calibri" size="35.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#0000008b" radius="7.25" width="10.0" />
+               </effect>
+            </Label>
+         </children></Pane>
+      <Pane fx:id="pane3" layoutX="258.0" prefHeight="820.0" prefWidth="1045.0" style="-fx-background-color: #F1EFF1;">
+         <children>
+            <Label prefHeight="75.0" prefWidth="1045.0" style="-fx-background-color: white;" text="Orders">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <font>
+                  <Font name="Calibri" size="35.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#0000008b" radius="7.25" width="10.0" />
+               </effect>
+            </Label>
+            <TableView fx:id="ord_table" layoutX="11.0" layoutY="174.0" onMouseClicked="#clickItemOnOrder" prefHeight="635.0" prefWidth="1023.0" stylesheets="@tableview.css">
+               <columns>
+                  <TableColumn fx:id="ord_col_order" prefWidth="94.0" text="Order" />
+                  <TableColumn fx:id="ord_col_customer" minWidth="0.0" prefWidth="103.0" text="Customer" />
+                  <TableColumn fx:id="ord_col_product" minWidth="0.0" prefWidth="109.0" text="Product" />
+                  <TableColumn fx:id="ord_col_employee" minWidth="0.0" prefWidth="126.0" text="Employee" />
+                  <TableColumn fx:id="ord_col_price" minWidth="0.0" prefWidth="128.0" text="Unit price" />
+                  <TableColumn fx:id="ord_col_quantity" minWidth="0.0" prefWidth="117.0" text="Quantity" />
+                  <TableColumn fx:id="ord_col_discount" minWidth="0.0" prefWidth="117.0" text="Discount" />
+                  <TableColumn fx:id="ord_col_date" minWidth="0.0" prefWidth="210.0" text="Date" />
+               </columns>
+               <effect>
+                  <DropShadow color="#00000032" height="15.0" radius="7.0" width="15.0" />
+               </effect>
+            </TableView>
+            <JFXComboBox fx:id="ord_comboBox" layoutX="215.0" layoutY="125.0" onAction="#orderSearchBy" prefHeight="31.0" prefWidth="134.0" promptText="by" />
+            <JFXTextField fx:id="ord_search" layoutX="14.0" layoutY="125.0" onKeyReleased="#orderSearch" prefHeight="31.0" prefWidth="193.0" promptText="Search" />
+         </children>
+      </Pane>
+      <Pane fx:id="pane1" layoutX="258.0" prefHeight="820.0" prefWidth="1045.0" style="-fx-background-color: #F1EFF1;">
+         <children>
+            <Label prefHeight="75.0" prefWidth="1045.0" style="-fx-background-color: white;" text="Dashboard">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <font>
+                  <Font name="Calibri" size="35.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#0000008b" radius="7.25" width="10.0" />
+               </effect>
+            </Label>
+            <HBox alignment="CENTER" layoutX="11.0" layoutY="91.0" prefHeight="211.0" prefWidth="1023.0" spacing="13.0">
+               <children>
+                  <Pane prefHeight="150.0" prefWidth="245.0" style="-fx-background-radius: 50;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#216bff" height="150.0" opacity="0.83" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="245.0" />
+                        <Text fx:id="dsb_sales_label" fill="WHITE" layoutX="14.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100%" wrappingWidth="192.6367175579071">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sales" wrappingWidth="72.63671875">
+                           <font>
+                              <Font name="System Bold" size="28.0" />
+                           </font>
+                        </Text>
+                        <MaterialDesignIconView fill="WHITE" glyphName="SALE" layoutX="182.0" layoutY="61.0" size="50" />
+                     </children>
+                     <effect>
+                        <DropShadow color="#00000052" height="5.0" radius="2.0" width="5.0" />
+                     </effect>
+                  </Pane>
+                  <Pane prefHeight="150.0" prefWidth="245.0" style="-fx-background-radius: 10;">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#21aeff" height="150.0" opacity="0.83" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="245.0" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Purchases">
+                           <font>
+                              <Font name="System Bold" size="25.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="dsb_purchases_label" fill="WHITE" layoutX="14.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100%" wrappingWidth="192.6367175579071">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <FontAwesomeIconView fill="WHITE" glyphName="SHOPPING_BASKET" layoutX="180.0" layoutY="58.0" size="50" />
+                     </children>
+                     <effect>
+                        <DropShadow color="#00000052" height="5.0" radius="2.0" width="5.0" />
+                     </effect>
+                  </Pane>
+                  <Pane prefHeight="150.0" prefWidth="245.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffda21" height="150.0" opacity="0.83" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="245.0" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Payments">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="dsb_payments_label" fill="WHITE" layoutX="14.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100%" wrappingWidth="192.6367175579071">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <FontAwesomeIconView fill="WHITE" glyphName="PAYPAL" layoutX="185.0" layoutY="59.0" size="50" />
+                     </children>
+                     <effect>
+                        <DropShadow color="#00000052" height="5.0" radius="2.0" width="5.0" />
+                     </effect>
+                  </Pane>
+                  <Pane prefHeight="150.0" prefWidth="245.0">
+                     <children>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ff4e21" height="150.0" opacity="0.83" stroke="BLACK" strokeType="OUTSIDE" strokeWidth="0.0" width="245.0" />
+                        <Text fill="WHITE" layoutX="14.0" layoutY="44.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Returns">
+                           <font>
+                              <Font name="System Bold" size="26.0" />
+                           </font>
+                        </Text>
+                        <Text fx:id="dsb_returns_label" fill="WHITE" layoutX="14.0" layoutY="129.0" strokeType="OUTSIDE" strokeWidth="0.0" text="100%" wrappingWidth="192.6367175579071">
+                           <font>
+                              <Font name="System Bold" size="24.0" />
+                           </font>
+                        </Text>
+                        <MaterialDesignIconView fill="WHITE" glyphName="KEYBOARD_RETURN" layoutX="180.0" layoutY="61.0" size="52" />
+                     </children>
+                     <effect>
+                        <DropShadow color="#00000052" height="5.0" radius="2.0" width="5.0" />
+                     </effect>
+                  </Pane>
+               </children>
+               <padding>
+                  <Insets bottom="31.0" top="31.0" />
+               </padding>
+            </HBox>
+            <Pane layoutX="356.0" layoutY="312.0" prefHeight="472.0" prefWidth="333.0" style="-fx-background-color: white;">
+               <effect>
+                  <DropShadow color="#00000035" />
+               </effect>
+               <children>
+                  <JFXButton alignment="CENTER" layoutY="422.0" onAction="#ordButtonFire" opacity="0.88" prefHeight="50.0" prefWidth="333.0" ripplerFill="#47ae35" style="-fx-background-color: #67f451;" text="VIEW MORE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" height="89.33" radius="25.5825" width="15.0" />
+                     </effect>
+                  </JFXButton>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="333.0" style="-fx-background-color: white;" text="Last orders" textAlignment="CENTER">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Line endX="166.0" layoutX="167.0" layoutY="60.0" opacity="0.45" startX="-167.0" strokeWidth="0.5" />
+                  <ScrollPane hbarPolicy="NEVER" layoutY="60.0" prefHeight="363.0" prefWidth="333.0" vbarPolicy="NEVER">
+                     <content>
+                        <VBox fx:id="order_containers" prefHeight="363.0" prefWidth="332.0" style="-fx-background-color: white;" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane layoutX="14.0" layoutY="312.0" prefHeight="472.0" prefWidth="333.0" style="-fx-background-color: white;">
+               <effect>
+                  <DropShadow color="#00000035" />
+               </effect>
+               <children>
+                  <JFXButton alignment="CENTER" layoutY="422.0" onAction="#ordButtonFire" opacity="0.88" prefHeight="50.0" prefWidth="333.0" ripplerFill="#47ae35" style="-fx-background-color: #67f451;" text="VIEW MORE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" height="89.33" radius="25.5825" width="15.0" />
+                     </effect>
+                  </JFXButton>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="333.0" style="-fx-background-color: white;" text="Last returns" textAlignment="CENTER">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Line endX="166.0" layoutX="167.0" layoutY="60.0" opacity="0.45" startX="-167.0" strokeWidth="0.5" />
+                  <ScrollPane hbarPolicy="NEVER" layoutY="60.0" prefHeight="363.0" prefWidth="333.0" vbarPolicy="NEVER">
+                     <content>
+                        <VBox fx:id="returns_containers" prefHeight="363.0" prefWidth="332.0" style="-fx-background-color: white;" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+            <Pane layoutX="698.0" layoutY="312.0" prefHeight="472.0" prefWidth="333.0" style="-fx-background-color: white;">
+               <effect>
+                  <DropShadow color="#00000035" />
+               </effect>
+               <children>
+                  <JFXButton alignment="CENTER" layoutY="422.0" onAction="#empButtonFire" opacity="0.88" prefHeight="50.0" prefWidth="333.0" ripplerFill="#47ae35" style="-fx-background-color: #67f451;" text="VIEW MORE" textFill="WHITE">
+                     <font>
+                        <Font name="System Bold" size="16.0" />
+                     </font>
+                     <effect>
+                        <DropShadow blurType="ONE_PASS_BOX" height="89.33" radius="25.5825" width="15.0" />
+                     </effect>
+                  </JFXButton>
+                  <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="60.0" prefWidth="333.0" style="-fx-background-color: white;" text="Best employees" textAlignment="CENTER">
+                     <padding>
+                        <Insets left="20.0" />
+                     </padding>
+                     <font>
+                        <Font name="Calibri Bold" size="20.0" />
+                     </font>
+                  </Label>
+                  <Line endX="166.0" layoutX="167.0" layoutY="60.0" opacity="0.45" startX="-167.0" strokeWidth="0.5" />
+                  <ScrollPane hbarPolicy="NEVER" layoutY="60.0" prefHeight="363.0" prefWidth="333.0" vbarPolicy="NEVER">
+                     <content>
+                        <VBox fx:id="employees_containers" prefHeight="363.0" prefWidth="332.0" style="-fx-background-color: white;" />
+                     </content>
+                  </ScrollPane>
+               </children>
+            </Pane>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

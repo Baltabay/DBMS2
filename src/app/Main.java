@@ -1,7 +1,7 @@
 package app;
 
+import de.jensd.fx.glyphs.fontawesome.FontAwesomeIcon;
 import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIcon;
-import de.jensd.fx.glyphs.materialdesignicons.MaterialDesignIconView;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -14,7 +14,8 @@ public class Main extends Application {
 
     @Override
     public void start(Stage primaryStage) throws Exception{
-        //MaterialDesignIcon.BACKSPACE
+        /*FontAwesomeIcon.SHOPPING_BASKET;
+        MaterialDesignIcon.KEYBOARD_RETURN*/
         FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/login.fxml"));
         Parent root = loader.load();
         Scene scene = new Scene(root);
