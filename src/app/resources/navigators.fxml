@@ -28,6 +28,20 @@
 
 <AnchorPane prefHeight="820.0" prefWidth="1303.0" style="-fx-background-color: #F1EFF1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="app.NavigatorsFXMLController">
    <children>
+      <Pane fx:id="pane2" layoutX="258.0" prefHeight="820.0" prefWidth="1045.0" style="-fx-background-color: #F1EFF1;">
+         <children>
+            <Label prefHeight="75.0" prefWidth="1045.0" style="-fx-background-color: white;" text="?">
+               <padding>
+                  <Insets left="20.0" />
+               </padding>
+               <font>
+                  <Font name="Calibri" size="35.0" />
+               </font>
+               <effect>
+                  <DropShadow color="#0000008b" radius="7.25" width="10.0" />
+               </effect>
+            </Label>
+         </children></Pane>
       <VBox fx:id="pane" alignment="TOP_CENTER" prefHeight="820.0" prefWidth="258.0" style="-fx-background-color: #263650;">
          <effect>
             <DropShadow color="#000000c9" radius="7.25" width="10.0" />
@@ -57,17 +71,6 @@
                </font>
                <graphic>
                   <MaterialDesignIconView fill="#bfbfbf" glyphName="VIEW_DASHBOARD" size="20" />
-               </graphic>
-               <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
-               </VBox.margin>
-            </JFXButton>
-            <JFXButton fx:id="btn2" layoutX="10.0" layoutY="145.0" onAction="#handlerMenuButton" prefHeight="60.0" prefWidth="323.0" text="Button" textFill="#bfbfbf">
-               <font>
-                  <Font name="Calibri Light" size="20.0" />
-               </font>
-               <graphic>
-                  <MaterialDesignIconView fill="#bfbfbf" size="20" />
                </graphic>
                <VBox.margin>
                   <Insets bottom="10.0" top="10.0" />
@@ -114,7 +117,7 @@
                   <MaterialDesignIconView fill="#bfbfbf" glyphName="EXIT_TO_APP" size="20" />
                </graphic>
                <VBox.margin>
-                  <Insets bottom="10.0" top="10.0" />
+                  <Insets bottom="90.0" top="10.0" />
                </VBox.margin>
             </JFXButton>
             <Label text="\@Baltabay" textFill="#bfbfbf">
@@ -127,40 +130,6 @@
             </Label>
          </children>
       </VBox>
-      <Pane fx:id="pane4" layoutX="258.0" prefHeight="820.0" prefWidth="1045.0" style="-fx-background-color: #F1EFF1;">
-         <children>
-            <TableView fx:id="emp_table" layoutX="11.0" layoutY="175.0" onMouseClicked="#clickItemOnEmployee" prefHeight="635.0" prefWidth="1023.0" stylesheets="@tableview.css">
-              <columns>
-                <TableColumn fx:id="emp_col_id" prefWidth="142.0" text="Employee_id" />
-                <TableColumn fx:id="emp_col_firstName" minWidth="0.0" prefWidth="181.0" text="First name" />
-                  <TableColumn fx:id="emp_col_lastName" minWidth="0.0" prefWidth="206.0" text="Last Name" />
-                  <TableColumn fx:id="emp_col_job" minWidth="0.0" prefWidth="222.0" text="Job description" />
-                  <TableColumn fx:id="emp_col_phone" minWidth="0.0" prefWidth="253.0" text="Phone" />
-              </columns>
-               <effect>
-                  <DropShadow color="#00000033" height="15.0" radius="7.0" width="15.0" />
-               </effect>
-            </TableView>
-            <JFXButton layoutX="887.0" layoutY="127.0" prefHeight="31.0" prefWidth="144.0" text="Add Employee">
-               <graphic>
-                  <MaterialDesignIconView glyphName="PLUS" glyphStyle="BOLD" size="20" />
-               </graphic>
-            </JFXButton>
-            <Label prefHeight="75.0" prefWidth="1045.0" style="-fx-background-color: white;" text="Employees">
-               <padding>
-                  <Insets left="20.0" />
-               </padding>
-               <font>
-                  <Font name="Calibri" size="35.0" />
-               </font>
-               <effect>
-                  <DropShadow color="#0000008b" radius="7.25" width="10.0" />
-               </effect>
-            </Label>
-            <JFXComboBox fx:id="emp_comboBox" layoutX="215.0" layoutY="125.0" onAction="#employeeSearchBy" prefHeight="31.0" prefWidth="134.0" promptText="by" />
-            <JFXTextField fx:id="emp_search" layoutX="14.0" layoutY="125.0" onKeyReleased="#employeeSearch" prefHeight="31.0" prefWidth="193.0" promptText="Search" />
-         </children>
-      </Pane>
       <Pane fx:id="pane5" layoutX="258.0" prefHeight="820.0" prefWidth="1045.0" style="-fx-background-color: #F1EFF1;">
          <children>
             <VBox layoutX="6.0" layoutY="75.0" prefHeight="745.0" prefWidth="1033.0">
@@ -198,9 +167,26 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="pane2" layoutX="258.0" prefHeight="820.0" prefWidth="1045.0" style="-fx-background-color: #F1EFF1;">
+      <Pane fx:id="pane4" layoutX="258.0" prefHeight="820.0" prefWidth="1045.0" style="-fx-background-color: #F1EFF1;">
          <children>
-            <Label prefHeight="75.0" prefWidth="1045.0" style="-fx-background-color: white;" text="?">
+            <TableView fx:id="emp_table" layoutX="11.0" layoutY="175.0" onMouseClicked="#clickItemOnEmployee" prefHeight="635.0" prefWidth="1023.0" stylesheets="@tableview.css">
+              <columns>
+                <TableColumn fx:id="emp_col_id" prefWidth="142.0" text="Employee_id" />
+                <TableColumn fx:id="emp_col_firstName" minWidth="0.0" prefWidth="181.0" text="First name" />
+                  <TableColumn fx:id="emp_col_lastName" minWidth="0.0" prefWidth="206.0" text="Last Name" />
+                  <TableColumn fx:id="emp_col_job" minWidth="0.0" prefWidth="222.0" text="Job description" />
+                  <TableColumn fx:id="emp_col_phone" minWidth="0.0" prefWidth="253.0" text="Phone" />
+              </columns>
+               <effect>
+                  <DropShadow color="#00000033" height="15.0" radius="7.0" width="15.0" />
+               </effect>
+            </TableView>
+            <JFXButton layoutX="887.0" layoutY="127.0" onAction="#addEmployee" prefHeight="31.0" prefWidth="144.0" text="Add Employee">
+               <graphic>
+                  <MaterialDesignIconView glyphName="PLUS" glyphStyle="BOLD" size="20" />
+               </graphic>
+            </JFXButton>
+            <Label prefHeight="75.0" prefWidth="1045.0" style="-fx-background-color: white;" text="Employees">
                <padding>
                   <Insets left="20.0" />
                </padding>
@@ -211,7 +197,10 @@
                   <DropShadow color="#0000008b" radius="7.25" width="10.0" />
                </effect>
             </Label>
-         </children></Pane>
+            <JFXComboBox fx:id="emp_comboBox" layoutX="215.0" layoutY="125.0" onAction="#employeeSearchBy" prefHeight="31.0" prefWidth="134.0" promptText="by" />
+            <JFXTextField fx:id="emp_search" layoutX="14.0" layoutY="125.0" onKeyReleased="#employeeSearch" prefHeight="31.0" prefWidth="193.0" promptText="Search" />
+         </children>
+      </Pane>
       <Pane fx:id="pane3" layoutX="258.0" prefHeight="820.0" prefWidth="1045.0" style="-fx-background-color: #F1EFF1;">
          <children>
             <Label prefHeight="75.0" prefWidth="1045.0" style="-fx-background-color: white;" text="Orders">

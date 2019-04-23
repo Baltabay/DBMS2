@@ -59,6 +59,7 @@ public class LoginFXMLController implements Initializable  {
         } catch (IOException e) {
             Alert alert = new Alert(Alert.AlertType.ERROR, e.getMessage());
             alert.showAndWait();
+            alert.showAndWait();
         }
     }
 

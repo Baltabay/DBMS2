@@ -120,7 +120,7 @@ public class NavigatorsFXMLController implements Initializable {
             connection = new OracleConnection("\"Project\"", "87013345999b").getConnection();
             stmt = connection.createStatement();
             getLastOrders();
-            //getLastReturns();
+            getLastReturns();
             getBestEmployees();
             getSales();
             getPurchases();
@@ -131,7 +131,6 @@ public class NavigatorsFXMLController implements Initializable {
         } catch (IOException e) {
             e.printStackTrace();
         }
-
 
         emp_comboBox.getItems().addAll("Last name", "First name", "Phone", "Job");
         ord_comboBox.getItems().addAll("Order", "Customer", "Product", "Employee");
@@ -252,6 +251,34 @@ public class NavigatorsFXMLController implements Initializable {
             stage.setScene(scene);
             stage.show();
         }
+    }
+
+    @FXML
+    private void empButtonFire(){
+        btn4.fire();
+    }
+
+    @FXML
+    private void ordButtonFire(){
+        btn3.fire();
+    }
+
+    @FXML
+    private void addEmployee(ActionEvent event) throws IOException {
+        Stage mainStage = (Stage)((Button)event.getSource()).getScene().getWindow();
+
+        Stage stage = new Stage();
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("resources/form.fxml"));
+        Parent root = loader.load();
+        FormController controller = loader.getController();
+        controller.initConnection(connection);
+        controller.setMainStage(mainStage);
+
+        Scene scene = new Scene(root);
+        stage.setScene(scene);
+        stage.initStyle(StageStyle.TRANSPARENT);
+        mainStage.hide();
+        stage.showAndWait();
     }
 
     public void getLastReturns() throws IOException, SQLException {
@@ -424,16 +451,5 @@ public class NavigatorsFXMLController implements Initializable {
             pie_chart3.getData().add(slice);
         }
     }
-
-    @FXML
-    private void empButtonFire(){
-        btn4.fire();
-    }
-
-    @FXML
-    private void ordButtonFire(){
-        btn3.fire();
-    }
-
 
 }
